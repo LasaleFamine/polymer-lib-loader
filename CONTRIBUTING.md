@@ -30,6 +30,11 @@ For everyone who wants to contribute to this repository, here is how to do it.
   }
 }
 ```
+# Not on library load
+
+The ability of the component to load the library and not reload it again and again is related to the **libUniqueId**.
+The `<script id="yourId" src="yourLibLink">` will be attached as a child of the body and **removed when the component is detached** (or when a wrapper of it is detached).
+
 
 # Develop
 
