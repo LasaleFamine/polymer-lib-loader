@@ -1,10 +1,9 @@
 # `<lib-loader>` Polymer Element
 
 [![Build status](https://travis-ci.org/LasaleFamine/polymer-lib-loader.svg?branch=master)](https://travis-ci.org/LasaleFamine/polymer-lib-loader)
-[![Bower version](https://badge.fury.io/bo/polymer-lib-loader.svg)](https://badge.fury.io/bo/polymer-lib-loader)
-[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg?style=flat-square)](https://github.com/sindresorhus/xo)
 [![Dependency Status](https://gemnasium.com/badges/github.com/LasaleFamine/polymer-lib-loader.svg)](https://gemnasium.com/github.com/LasaleFamine/polymer-lib-loader)
- 
+
 
 > Library loader WebComponent for external (or internal) library. Written on top of [Polymer 3.0](https://www.polymer-project.org/).
 
