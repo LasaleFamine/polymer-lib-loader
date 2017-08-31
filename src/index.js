@@ -5,7 +5,8 @@ export default class LibLoader extends Element {
     return {
       /** Link of the library */
       lib: {
-        type: String
+        type: String,
+        observer: '_insertLib'
       },
       /** <script id="" */
       libUniqueId: {
@@ -26,13 +27,7 @@ export default class LibLoader extends Element {
 
   connectedCallback() {
     super.connectedCallback();
-    if (!this.lib || !this.libUniqueId) {
-      console.error('<lib-loader> ERROR: Library or unique id not specified.');
-      return false;
-    }
-
     this.addEventListener('lib-loaded', () => this.set('libReady', true));
-    this._insertLib(this.lib, this.libUniqueId);
   }
 
   disconnectedCallback() {
@@ -53,7 +48,10 @@ export default class LibLoader extends Element {
    * */
 
   /* Insert at the end of the body the js lib */
-  _insertLib(link, type) {
+  _insertLib() {
+    this.libUniqueId = this.libUniqueId || 'lib-loader' + new Date().getUTCMilliseconds();
+    const link = this.lib;
+    const type = this.libUniqueId;
     // Check for existent lib
     if (document.querySelector('#' + type)) {
       document.querySelector('lib-loader').addEventListener('lib-loaded', evt => {
