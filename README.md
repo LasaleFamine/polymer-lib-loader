@@ -1,4 +1,4 @@
-# `<lib-loader>` Polymer (ES6)
+# `<lib-loader>` Polymer Element
 
 [![Build status](https://travis-ci.org/LasaleFamine/polymer-lib-loader.svg?branch=master)](https://travis-ci.org/LasaleFamine/polymer-lib-loader)
 [![Bower version](https://badge.fury.io/bo/polymer-lib-loader.svg)](https://badge.fury.io/bo/polymer-lib-loader)
@@ -6,37 +6,41 @@
 [![Dependency Status](https://gemnasium.com/badges/github.com/LasaleFamine/polymer-lib-loader.svg)](https://gemnasium.com/github.com/LasaleFamine/polymer-lib-loader)
  
 
-> Library loader WebComponent for external (or internal) library. Written in [Polymer 1.0](https://www.polymer-project.org/1.0/) in ES6 syntax.
+> Library loader WebComponent for external (or internal) library. Written on top of [Polymer 3.0](https://www.polymer-project.org/).
 
 ## Why
 
-A simple component for delegate the task to import an external library.  
-If you need to wrap a functionality of a library and load it only inside a component.  
-Example:
-
-``` html
-<link rel="import" href="[your_bower_folder]/polymer-lib-loader/lib-loader.html">
-
-<lib-loader
-lib="https://cdnjs.cloudflare.com/ajax/libs/[lib]/[version]/[lib].js"
-lib-unique-id="uniqueIdHere"
- on-lib-loaded="yourCallbackOnLoad"></lib-loader>
-
-[...]
-
-yourCallbackOnLoad: function () {
-  console.log('loaded')
-  yourLib.doingSomenthing('yo')
-},
-
-[...]
-```
-
-See the [`demo`](https://github.com/LasaleFamine/polymer-lib-loader/blob/master/demo/) folder for more details.
+A simple component for delegate the task to import an external library.
+If you need to attach a library to the `window` object from within a module-component.
 
 ## Install
 
-    $ bower install polymer-lib-loader
+    $ yarn add polymer-lib-loader
+
+## Usage
+
+You may want to load it using Webpack.
+
+### awesome-component.js
+``` js
+import libLoader from 'polymer-lib-loader';
+
+// Your awesome component logic...
+
+...
+
+static get template() {
+  return `
+  <lib-loader
+    lib="https://cdnjs.cloudflare.com/ajax/libs/[lib]/[version]/[lib].js"
+    lib-unique-id="uniqueIdHere"
+    on-lib-loaded="yourCallbackOnLoad"></lib-loader>
+  `
+}
+
+...
+```
+The [`demo`](https://github.com/LasaleFamine/polymer-lib-loader/blob/master/demo/) uses a bundled element. You can check the [`webpack.config.js`](https://github.com/LasaleFamine/polymer-lib-loader/blob/master/test/webpack.config,js) for more details.
 
 
 ## Default Properties
@@ -61,7 +65,7 @@ See the [`demo`](https://github.com/LasaleFamine/polymer-lib-loader/blob/master/
 ```
 
 ## Note on library load
-The ability of the component to load the library and not reload it again and again is related to the `libUniqueId`.  
+The ability of the component to load the library and not reload it again and again is related to the `libUniqueId`.
 The `<script id="yourId" src="yourLibLink">` will be attached as a child of the `body` and **removed when the component is detached** (or when a wrapper of it is detached).
 
 ## API
@@ -79,24 +83,22 @@ When the initialization of the library is complete
 
 ## Develop
 
-Clone the repository ***inside a folder*** (ex: `sandbox-polymer-lib-loader/polymer-lib-loader`) and inside the `polymer-lib-loader` folder:
+    $ yarn
 
-    $ npm install && bower install
+Compile and start a web server (http://localhost:8080/polymer-lib-loader/demo)
 
-Developing mode: **watch** on base files and **Babel** that transpiles (http://localhost:8080/polymer-lib-loader/demo)
+    $ yarn start
 
-    $ npm start
+Build: only the **Webpack** action simply run
 
-Build: only the **Babel** action simply run
-
-    $ npm run build
+    $ yarn build
 
 
 ## Test
 
-[Standard](https://github.com/feross/standard) for coding style and [WCT](https://github.com/polymer/web-component-tester) for unit test:
+[XO](https://github.com/sindresorhus/xo) for coding style and [WCT](https://github.com/polymer/web-component-tester) for unit test:
 
-    $ npm test
+    $ yarn test
 
 ## License
 
