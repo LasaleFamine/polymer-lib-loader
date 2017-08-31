@@ -5,21 +5,19 @@
     <meta charset="UTF-8">
 
     <!-- MAIN IMPORTS -->
-    <script src="./../../webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="./../../web-component-tester/browser.js"></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/web-component-tester/browser.js"></script>
 
-
-    <link rel="import" href="./../../polymer/polymer.html">
-
+    <script src="test-fixture.js"></script>
     <!-- COMPONENT TO TEST -->
-    <link rel="import" href="./../lib-loader.html">
+    <script src="element-bundle.js" async></script>
 </head>
 
 <body>
     <test-fixture id="libLoader">
-        <template>
-            <lib-loader lib="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js" lib-unique-id="aceEditor"></lib-loader>
-        </template>
+      <template>
+        <lib-loader lib="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js" lib-unique-id="aceEditor"></lib-loader>
+      </template>
     </test-fixture>
 
 
@@ -27,35 +25,35 @@
         suite('<lib-loader>', function() {
             var libLoader;
             var libLink = 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js';
-            var libId = 'aceEditor'
+            var libId = 'aceEditor';
 
             setup(function() {
-                libLoader = fixture('libLoader');
+              libLoader = fixture('libLoader');
             });
 
             suite('Test Properties', function() {
-                test('Default Properties compiled', function() {
-                    assert.equal(libLoader.lib, libLink);
-                    assert.equal(libLoader.libUniqueId, libId);
-                    assert.isFalse(libLoader.libReady);
-                });
+              test('Default Properties compiled', function() {
+                assert.equal(libLoader.lib, libLink);
+                assert.equal(libLoader.libUniqueId, libId);
+                assert.isFalse(libLoader.libReady);
+              });
 
-                test('Initialization library', function(done) {
-                    libLoader.addEventListener('lib-loaded', function (evt) {
-                        assert.isOk(document.querySelector('#' + libId));
-                        assert.isTrue(libLoader.libReady, "Correct initialization library");
-                        done();
-                    })
+              test('Initialization library', function(done) {
+                libLoader.addEventListener('lib-loaded', function (evt) {
+                  assert.isOk(document.querySelector('#' + libId));
+                  assert.isTrue(libLoader.libReady, "Correct initialization library");
+                  done();
                 });
+              });
             });
 
             suite('Test Methods', function() {
               test('check removeLib()', function(done) {
-                  libLoader.addEventListener('lib-loaded', function (evt) {
-                      libLoader.removeLib();
-                      assert.isNull(document.querySelector('#' + libId));
-                      done();
-                  })
+                libLoader.addEventListener('lib-loaded', function (evt) {
+                  libLoader.removeLib();
+                  assert.isNull(document.querySelector('#' + libId));
+                  done();
+                });
               });
             });
         });
