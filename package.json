@@ -23,7 +23,9 @@
       "test/**"
     ]
   },
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "author": "Alessio Occhipinti @lasalefamine",
   "license": "MIT",
   "devDependencies": {
