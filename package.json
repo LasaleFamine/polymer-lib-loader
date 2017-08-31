@@ -1,6 +1,6 @@
 {
   "name": "polymer-lib-loader",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Polymer (ES6) external (or internal) library loader component",
   "main": "lib-loader.js",
   "repository": {
