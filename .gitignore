@@ -8,3 +8,5 @@ npm-debug.log*
 .lock-wscript
 
 node_modules
+# Just because we need to "hack" wct
+bower_components
