@@ -11,6 +11,9 @@
 A simple component for delegate the task to import an external library.
 If you need to attach a library to the `window` object from within a module-component.
 
+#### NOTE:
+I'm using a modified version of `@polymer/polymer` which I forked, removing the `flat` (useless and problematic) property for `yarn`.
+
 ## Install
 
     $ yarn add polymer-lib-loader
