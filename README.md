@@ -24,7 +24,7 @@ You may want to load it using Webpack.
 
 ### awesome-component.js
 ``` js
-import libLoader from 'polymer-lib-loader';
+import 'polymer-lib-loader';
 
 // Your awesome component logic...
 
